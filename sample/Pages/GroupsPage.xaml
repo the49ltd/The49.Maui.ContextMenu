@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             x:Class="The49.Maui.ContextMenu.Sample.Pages.GroupsPage"
+             Title="Group actions">
+    <ScrollView>
+        <VerticalStackLayout Spacing="32" Padding="32">
+            <Label Text="Group related actions together" HorizontalTextAlignment="Center" FontSize="18" />
+            <ContentView HeightRequest="200" WidthRequest="200" Background="GreenYellow">
+                <the49:ContextMenu.Menu>
+                    <DataTemplate>
+                        <the49:Menu>
+                            <the49:Action Title="Upload documents" />
+                            <the49:Group>
+                                <the49:Action Title="Copy" />
+                                <the49:Action Title="Paste" IsEnabled="False" />
+                            </the49:Group>
+                            <the49:Action Title="Delete" IsDestructive="True" />
+                        </the49:Menu>
+                    </DataTemplate>
+                </the49:ContextMenu.Menu>
+                <Label Text="Top level Action and Group" VerticalOptions="Center" HorizontalOptions="Center" />
+            </ContentView>
+            <ContentView HeightRequest="200" WidthRequest="200" Background="Yellow">
+                <the49:ContextMenu.Menu>
+                    <DataTemplate>
+                        <the49:Menu>
+                            <the49:Action Title="Upload documents" />
+                            <the49:Group Title="Clipboard">
+                                <the49:Action Title="Copy" />
+                                <the49:Action Title="Paste" IsEnabled="False" />
+                            </the49:Group>
+                            <the49:Action Title="Delete" IsDestructive="True" />
+                        </the49:Menu>
+                    </DataTemplate>
+                </the49:ContextMenu.Menu>
+                <Label Text="With group title" VerticalOptions="Center" HorizontalOptions="Center" />
+            </ContentView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

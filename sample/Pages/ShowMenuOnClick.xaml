@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             x:Class="The49.Maui.ContextMenu.Sample.Pages.ShowMenuOnClick"
+             x:Name="this"
+             Title="Show menu on click">
+    <ScrollView BindingContext="{x:Reference this}">
+        <VerticalStackLayout Spacing="32" Padding="32">
+            <Label Text="Trigger the menu on click instead of long press" HorizontalTextAlignment="Center" FontSize="18" />
+            <Label Text="Note: on iOS this is only supported for Buttons" HorizontalTextAlignment="Center" FontSize="18" />
+            <ContentView HeightRequest="200" WidthRequest="200" Background="GreenYellow" the49:ContextMenu.ShowMenuOnClick="True">
+                <the49:ContextMenu.Menu>
+                    <DataTemplate>
+                        <the49:Menu>
+                            <the49:Action Title="Upload documents" />
+                            <the49:Action Title="Copy" />
+                            <the49:Action Title="Paste" />
+                            <the49:Action Title="Secret" IsVisible="False" />
+                        </the49:Menu>
+                    </DataTemplate>
+                </the49:ContextMenu.Menu>
+                <Label Text="Simple menu shown on click" VerticalOptions="Center" HorizontalOptions="Center" />
+            </ContentView>
+            <Button Text="Options" the49:ContextMenu.ShowMenuOnClick="True">
+                <the49:ContextMenu.Menu>
+                    <DataTemplate>
+                        <the49:Menu>
+                            <the49:Action Title="Upload documents" />
+                            <the49:Action Title="Copy" />
+                            <the49:Action Title="Paste" />
+                            <the49:Action Title="Secret" IsVisible="False" />
+                        </the49:Menu>
+                    </DataTemplate>
+                </the49:ContextMenu.Menu>
+            </Button>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

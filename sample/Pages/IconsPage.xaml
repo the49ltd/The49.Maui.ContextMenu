@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             x:Class="The49.Maui.ContextMenu.Sample.Pages.IconsPage"
+             Title="Display icons">
+    <ScrollView>
+        <VerticalStackLayout Spacing="32" Padding="32">
+            <Label Text="Android does not support icons in context menus, so this is for iOS only" HorizontalTextAlignment="Center" FontSize="18" />
+            <ContentView HeightRequest="200" WidthRequest="200" Background="GreenYellow">
+                <the49:ContextMenu.Menu>
+                    <DataTemplate>
+                        <the49:Menu>
+                            <the49:Action Title="Upload documents" Icon="dotnet_bot.png" />
+                            <the49:Group>
+                                <the49:Action Title="Copy" Icon="dotnet_bot.png" />
+                                <the49:Action Title="Paste" IsEnabled="False" Icon="dotnet_bot.png" />
+                            </the49:Group>
+                            <the49:Action Title="Delete" IsDestructive="True" Icon="dotnet_bot.png" />
+                        </the49:Menu>
+                    </DataTemplate>
+                </the49:ContextMenu.Menu>
+                <Label Text="Custom icons" VerticalOptions="Center" HorizontalOptions="Center" />
+            </ContentView>
+            <ContentView HeightRequest="200" WidthRequest="200" Background="Yellow">
+                <the49:ContextMenu.Menu>
+                    <DataTemplate>
+                        <the49:Menu>
+                            <the49:Action Title="Upload documents" SystemIcon="IcMenuAdd" />
+                            <the49:Group Title="Clipboard">
+                                <the49:Action Title="Copy" SystemIcon="doc.on.clipboard" />
+                                <the49:Action Title="Paste" IsEnabled="False" SystemIcon="arrow.up.doc.on.clipboard" />
+                            </the49:Group>
+                            <the49:Action Title="Delete" IsDestructive="True" SystemIcon="trash" />
+                        </the49:Menu>
+                    </DataTemplate>
+                </the49:ContextMenu.Menu>
+                <Label Text="SystemIcon: from the SFSymbol library" VerticalOptions="Center" HorizontalOptions="Center" />
+            </ContentView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

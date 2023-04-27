@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             x:Class="The49.Maui.ContextMenu.Sample.Pages.CollectionViewPage"
+             x:Name="this"
+             Title="Use with a CollectionView">
+    <Grid RowDefinitions="Auto, *" BindingContext="{x:Reference this}" RowSpacing="16" Padding="0, 32">
+        <VerticalStackLayout Spacing="8">
+            <Label Margin="32, 0" Text="Use the CollectionView provided by The49.Maui.ContextMenu. iOS needs this to have its underlying view handle the context menu event" />
+            <Label Margin="32, 0" Text="Add a ContextMenu.Menu to the CollectionView and each item will get its context menu" />
+            <Label Margin="32, 0" Text="The BindingContext of the Menu will be the same as the one in ItemTemplate, so you can have dynamic menus based on the Item's data" />
+            <Label Margin="32, 0" Text="Here, the text of the cell is used as the menu's title" />
+        </VerticalStackLayout>
+        <CollectionView ItemsSource="{Binding Items}" Grid.Row="1" the49:ContextMenu.ClickCommand="{Binding NotifyCommand}" SelectionMode="Single">
+            <the49:ContextMenu.Menu>
+                <DataTemplate>
+                    <the49:Menu Title="{Binding Text}">
+                        <the49:Action Title="{Binding Text}" />
+                        <the49:Action Title="Upload documents" Icon="dotnet_bot.png" Command="{Binding NotifyCommand, Source={x:Reference this}}" />
+                        <the49:Group Title="{Binding Text}">
+                            <the49:Action Title="Start" Icon="dotnet_bot.png" Command="{Binding NotifyCommand, Source={x:Reference this}}" />
+                            <the49:Action Title="Stop" Icon="dotnet_bot.png" IsEnabled="False" IsDestructive="True" Command="{Binding NotifyCommand, Source={x:Reference this}}" />
+                        </the49:Group>
+                        <the49:Menu Title="Clipboard">
+                            <the49:Action Title="Copy" Command="{Binding NotifyCommand, Source={x:Reference this}}" Icon="dotnet_bot.png" />
+                            <the49:Action Title="Paste" Command="{Binding NotifyCommand, Source={x:Reference this}}" Icon="dotnet_bot.png" />
+                        </the49:Menu>
+                    </the49:Menu>
+                </DataTemplate>
+            </the49:ContextMenu.Menu>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="3" />
+
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView Background="{Binding Color}" HeightRequest="{Binding CellHeight, Source={x:Reference this}}">
+                        <Label Text="{Binding Text}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" />
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

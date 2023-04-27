@@ -1,0 +1,28 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             x:Class="The49.Maui.ContextMenu.Sample.Pages.ClickCommandPage"
+             Title="Handle clicks"
+             x:Name="this">
+    <ScrollView BindingContext="{x:Reference this}">
+        <VerticalStackLayout Spacing="32" Padding="32">
+            <Label Text="The click command enabled interoperability with the context menu" HorizontalTextAlignment="Center" FontSize="18" />
+            <ContentView HeightRequest="200" WidthRequest="200" Background="GreenYellow"
+                         the49:ContextMenu.ClickCommand="{Binding ClickCommand}"
+                         the49:ContextMenu.ClickCommandParameter="Hello">
+                <the49:ContextMenu.Menu>
+                    <DataTemplate>
+                        <the49:Menu>
+                            <the49:Action Title="Upload documents" />
+                            <the49:Action Title="Copy" />
+                            <the49:Action Title="Paste" />
+                            <the49:Action Title="Secret" IsVisible="False" />
+                        </the49:Menu>
+                    </DataTemplate>
+                </the49:ContextMenu.Menu>
+                <Label Text="Simple menu" VerticalOptions="Center" HorizontalOptions="Center" />
+            </ContentView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

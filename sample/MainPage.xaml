@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             xmlns:pages="clr-namespace:The49.Maui.ContextMenu.Sample.Pages"
+             x:Class="The49.Maui.ContextMenu.Sample.MainPage"
+             Title="The49.Maui.ContextMenu.Sample"
+             x:Name="this">
+    <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="8" ColumnSpacing="8" Padding="32" BindingContext="{x:Reference this}">
+        <Button Text="Simple" Command="{Binding GoToPageCommand}" CommandParameter="{x:Type pages:SimplePage}" />
+        <Button Text="CollectionView" Command="{Binding GoToPageCommand}" CommandParameter="{x:Type pages:CollectionViewPage}" Grid.Column="1" />
+        <Button Text="Groups" Command="{Binding GoToPageCommand}" CommandParameter="{x:Type pages:GroupsPage}" Grid.Row="1"/>
+        <Button Text="Icons" Command="{Binding GoToPageCommand}" CommandParameter="{x:Type pages:IconsPage}" Grid.Row="1" Grid.Column="1" />
+        <Button Text="Preview" Command="{Binding GoToPageCommand}" CommandParameter="{x:Type pages:PreviewPage}" Grid.Row="2" />
+        <Button Text="ClickCommand" Command="{Binding GoToPageCommand}" CommandParameter="{x:Type pages:ClickCommandPage}" Grid.Row="2" Grid.Column="1" />
+        <Button Text="ShowMenuOnClick" Command="{Binding GoToPageCommand}" CommandParameter="{x:Type pages:ShowMenuOnClick}" Grid.Row="3" />
+
+    </Grid>
+
+</ContentPage>

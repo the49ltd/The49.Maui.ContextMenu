@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:the49="https://schemas.the49.com/dotnet/2023/maui"
+             x:Class="The49.Maui.ContextMenu.Sample.Pages.SimplePage"
+             Title="Quick start"
+             x:Name="this">
+    <ScrollView BindingContext="{x:Reference this}">
+        <VerticalStackLayout Spacing="32" Padding="32">
+            <Label Text="Add a context menu to any view:" HorizontalTextAlignment="Center" FontSize="18" />
+            <ContentView HeightRequest="200" WidthRequest="200" Background="GreenYellow">
+                <the49:ContextMenu.Menu>
+                    <DataTemplate>
+                        <the49:Menu>
+                            <the49:Action Title="Upload documents" Command="{Binding RunActionCommand}" CommandParameter="Hello" />
+                            <the49:Action Title="Copy" />
+                            <the49:Action Title="Paste" />
+                            <the49:Action Title="Secret" IsVisible="False" />
+                        </the49:Menu>
+                    </DataTemplate>
+                </the49:ContextMenu.Menu>
+                <Label Text="Simple menu" VerticalOptions="Center" HorizontalOptions="Center" />
+            </ContentView>
+            <ContentView HeightRequest="200" WidthRequest="200" Background="HotPink">
+                <the49:ContextMenu.Menu>
+                    <DataTemplate>
+                        <the49:Menu>
+                            <the49:Action Title="Upload documents" />
+                            <the49:Action Title="Copy" />
+                            <the49:Action Title="Paste" IsEnabled="False" />
+                        </the49:Menu>
+                    </DataTemplate>
+                </the49:ContextMenu.Menu>
+                <Label Text="IsEnabled=False" VerticalOptions="Center" HorizontalOptions="Center" />
+            </ContentView>
+            <ContentView HeightRequest="200" WidthRequest="200" Background="LimeGreen">
+                <the49:ContextMenu.Menu>
+                    <DataTemplate>
+                        <the49:Menu>
+                            <the49:Action Title="Upload documents" />
+                            <the49:Action Title="Copy" />
+                            <the49:Action Title="Delete" IsDestructive="True" />
+                        </the49:Menu>
+                    </DataTemplate>
+                </the49:ContextMenu.Menu>
+                <Label Text="IsDestructive=True" VerticalOptions="Center" HorizontalOptions="Center" />
+            </ContentView>
+            <ContentView HeightRequest="200" WidthRequest="200" Background="Yellow">
+                <the49:ContextMenu.Menu>
+                    <DataTemplate>
+                        <the49:Menu Title="Do something from here">
+                            <the49:Action Title="Upload documents" />
+                            <the49:Action Title="Copy" />
+                            <the49:Action Title="Delete" IsDestructive="True" />
+                        </the49:Menu>
+                    </DataTemplate>
+                </the49:ContextMenu.Menu>
+                <Label Text="With menu title" VerticalOptions="Center" HorizontalOptions="Center" />
+            </ContentView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
